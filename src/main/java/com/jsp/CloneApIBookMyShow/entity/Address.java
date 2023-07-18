@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Address {
 
@@ -20,6 +22,7 @@ public class Address {
 	private String country;
 	private long pincode;
 	@OneToOne(mappedBy = "address")
+	@JsonIgnore
 	private Theatre theatre;
 	public long getAddressId() {
 		return addressId;

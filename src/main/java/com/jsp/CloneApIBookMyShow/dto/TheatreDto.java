@@ -2,6 +2,8 @@ package com.jsp.CloneApIBookMyShow.dto;
 
 import java.util.List;
 
+import javax.persistence.JoinColumn;
+
 import com.jsp.CloneApIBookMyShow.entity.Address;
 import com.jsp.CloneApIBookMyShow.entity.MovieShow;
 import com.jsp.CloneApIBookMyShow.entity.Owner;

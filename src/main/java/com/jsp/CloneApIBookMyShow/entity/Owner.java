@@ -24,7 +24,7 @@ public class Owner {
 	@OneToMany(mappedBy = "owner")
 	@JsonIgnore
 	private List<ProductionHouse> houses;
-	@OneToMany
+	@OneToMany(mappedBy = "owner")
 	private List<Theatre> theatres;
 	public long getOwnerId() {
 		return ownerId;

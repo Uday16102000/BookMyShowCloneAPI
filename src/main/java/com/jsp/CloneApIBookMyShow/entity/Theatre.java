@@ -33,6 +33,7 @@ public class Theatre
 	private List<Screen> screen;
 	
 	@ManyToOne
+	@JoinColumn
 	private Owner owner;
 	
 	@OneToMany
