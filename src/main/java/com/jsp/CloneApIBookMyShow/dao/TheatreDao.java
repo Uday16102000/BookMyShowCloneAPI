@@ -25,11 +25,39 @@ public class TheatreDao {
 			Theatre oldTheatre=optional.get();
 			theatre.setTheatreId(theatreId);
 			theatre.setAddress(oldTheatre.getAddress());
-			theatre.setShows(oldTheatre.getShows());
+			theatre.setMovieshows(oldTheatre.getMovieshows());
 			theatre.setOwner(oldTheatre.getOwner());
 			theatre.setScreen(oldTheatre.getScreen());
 			return repo.save(theatre);
 		}
 		return null;
 	}
+
+	public Theatre deleteTheatre(long theatreId) {
+	Optional<Theatre> optional=repo.findById(theatreId);
+	if(optional.isPresent())
+	{
+		Theatre theatre=optional.get();
+				theatre.setOwner(null);
+		theatre.setAddress(null);
+		theatre.setScreen(null);
+		theatre.setMovieshows(null);
+	
+		repo.delete(theatre);
+		return optional.get();
+	}
+	return null;
+	}
+
+	public Theatre getTheatreById(long theatreId) {
+		Optional<Theatre> optional = repo.findById(theatreId);
+		if(optional.isPresent())
+				{
+		return optional.get();
+				}
+				
+		return null;
+	}
+	
+	
 }

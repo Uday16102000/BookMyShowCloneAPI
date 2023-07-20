@@ -3,6 +3,7 @@ package com.jsp.CloneApIBookMyShow.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,7 +38,7 @@ public class Theatre
 	private Owner owner;
 	
 	@OneToMany
-	private List<MovieShow> shows;
+	private List<MovieShow> movieshows;
 
 	public long getTheatreId() {
 		return theatreId;
@@ -79,13 +80,15 @@ public class Theatre
 		this.owner = owner;
 	}
 
-	public List<MovieShow> getShows() {
-		return shows;
+	public List<MovieShow> getMovieshows() {
+		return movieshows;
 	}
 
-	public void setShows(List<MovieShow> shows) {
-		this.shows = shows;
+	public void setMovieshows(List<MovieShow> movieshows) {
+		this.movieshows = movieshows;
 	}
+
+	
 	
 	
 	

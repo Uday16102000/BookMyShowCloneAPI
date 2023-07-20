@@ -51,7 +51,16 @@ public class BookMyShowExceptionHandler  extends ResponseEntityExceptionHandler
 	@ExceptionHandler
 	public ResponseEntity<ResponseStructure<String>> TheatreIdNotFound(TheatreIdNotFoundException ex){
 		ResponseStructure<String>  structure=new ResponseStructure<String>();
-		structure.setMessage("Theatre Already Present in the address");
+		structure.setMessage("Theatre  Already delted ");
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setData(ex.getMessage());
+		return new ResponseEntity<ResponseStructure<String>>(structure,HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler
+	public ResponseEntity<ResponseStructure<String>> CustomerIdNotFound(CustomerIdNotFoundException ex){
+		ResponseStructure<String>  structure=new ResponseStructure<String>();
+		structure.setMessage("Customer Id Not Found  ");
 		structure.setStatus(HttpStatus.NOT_FOUND.value());
 		structure.setData(ex.getMessage());
 		return new ResponseEntity<ResponseStructure<String>>(structure,HttpStatus.NOT_FOUND);

@@ -93,4 +93,33 @@ public ResponseEntity<ResponseStructure<Theatre>> updateTheatre(long theatreId, 
 		throw new TheatreIdNotFoundException("Soorrry failed to update theatre");
 	}
 }
+public ResponseEntity<ResponseStructure<Theatre>> deleteTheatre(long theatreId) {
+ Theatre theatre= theatreDao.deleteTheatre(theatreId);
+ if(theatre!=null)
+ {
+		
+		ResponseStructure<Theatre> structure = new ResponseStructure<Theatre>();
+		structure.setMessage("Theatre deleted successfully");
+		structure.setStatus(HttpStatus.FOUND.value());
+		structure.setData(theatre);
+		return new ResponseEntity<ResponseStructure<Theatre>>(structure,HttpStatus.FOUND);
+ }
+ else {
+	 throw  new  TheatreIdNotFoundException("sorry failed to find and delete theatre by Id");
+ }
+}
+public ResponseEntity<ResponseStructure<Theatre>> getTheatreById(long theatreId) {
+    Theatre dbtheatre=theatreDao.getTheatreById(theatreId);
+    if(dbtheatre!=null)
+    {
+    	ResponseStructure<Theatre> structure = new ResponseStructure<Theatre>();
+    	structure.setMessage("Theatre fetched successfully");
+    	structure.setStatus(HttpStatus.FOUND.value());
+    	structure.setData(dbtheatre);
+    	return new ResponseEntity<ResponseStructure<Theatre>>(structure,HttpStatus.FOUND);
+    }else {
+    	throw new TheatreIdNotFoundException("sorry failed to fetch theatre by the ID");
+    }
+}
+
 }
