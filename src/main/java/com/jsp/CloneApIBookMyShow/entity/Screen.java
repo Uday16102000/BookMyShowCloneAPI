@@ -2,6 +2,7 @@ package com.jsp.CloneApIBookMyShow.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,8 +24,8 @@ private ScreenType screentype;
 //screenAvailability==>enum
 private ScreenAvailability screenAvailability;
 //screenStatus==>enum
-private ScreenStatus screenSttaus;
-@OneToMany
+private ScreenStatus screenStatus;
+@OneToMany(mappedBy = "screen", cascade = CascadeType.ALL)
 private List<Seat> seats;
 private int noOfClassicSeat;
 private int noOfPlatinumSeat;
@@ -32,6 +33,32 @@ private int noOfGoldSeat;
 
 @ManyToOne
 private Theatre theatre;
+
+public ScreenType getScreentype() {
+	return screentype;
+}
+
+public void setScreentype(ScreenType screentype) {
+	this.screentype = screentype;
+}
+
+public ScreenAvailability getScreenAvailability() {
+	return screenAvailability;
+}
+
+public void setScreenAvailability(ScreenAvailability screenAvailability) {
+	this.screenAvailability = screenAvailability;
+}
+
+
+
+public ScreenStatus getScreenStatus() {
+	return screenStatus;
+}
+
+public void setScreenStatus(ScreenStatus screenStatus) {
+	this.screenStatus = screenStatus;
+}
 
 public long getScreenId() {
 	return screenId;

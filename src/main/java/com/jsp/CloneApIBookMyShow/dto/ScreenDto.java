@@ -22,13 +22,13 @@ public class ScreenDto
 	//screenStatus==>enum
 	private ScreenStatus screenSttaus;
 
-	private List<Seat> seats;
+//	private List<Seat> seats;
 	private int noOfClassicSeat;
 	private int noOfPlatinumSeat;
 	private int noOfGoldSeat;
 
 
-	private Theatre theatre;
+	
 
 	public long getScreenId() {
 		return screenId;
@@ -46,13 +46,7 @@ public class ScreenDto
 		this.screenName = screenName;
 	}
 
-	public List<Seat> getSeats() {
-		return seats;
-	}
 
-	public void setSeats(List<Seat> seats) {
-		this.seats = seats;
-	}
 
 	public int getNoOfClassicSeat() {
 		return noOfClassicSeat;
@@ -78,12 +72,6 @@ public class ScreenDto
 		this.noOfGoldSeat = noOfGoldSeat;
 	}
 
-	public Theatre getTheatre() {
-		return theatre;
-	}
-
-	public void setTheatre(Theatre theatre) {
-		this.theatre = theatre;
-	}
+	
 
 }
