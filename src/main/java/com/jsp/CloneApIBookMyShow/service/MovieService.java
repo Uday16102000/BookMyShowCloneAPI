@@ -11,6 +11,7 @@ import com.jsp.CloneApIBookMyShow.dao.ProductionHouseDao;
 import com.jsp.CloneApIBookMyShow.dto.MovieDto;
 import com.jsp.CloneApIBookMyShow.entity.Movie;
 import com.jsp.CloneApIBookMyShow.entity.ProductionHouse;
+import com.jsp.CloneApIBookMyShow.exception.MovieIdNotFoundException;
 import com.jsp.CloneApIBookMyShow.exception.ProductionHouseIdNotFoundException;
 import com.jsp.CloneApIBookMyShow.util.ResponseStructure;
 import java.util.List;
@@ -37,10 +38,12 @@ public class MovieService {
 				List<Movie> list=new ArrayList<Movie>();
 				list.add(movie);
 				house.setMovies(list);
+				houseDao.updateProductionHouse(houseId, house);
 			}else {
 				List<Movie> list=house.getMovies();
 				list.add(movie);
 				house.setMovies(list);
+				houseDao.updateProductionHouse(houseId, house);
 			}
 			ResponseStructure<MovieDto> structure=new ResponseStructure<MovieDto>();
 			structure.setMessage("Movie Saved successfully");
@@ -52,7 +55,24 @@ public class MovieService {
 		}
 			
 		}
+
+	public ResponseEntity<ResponseStructure<MovieDto>> updateMovie(long movieId, MovieDto movieDto) {
+		Movie movie=this.modelMapper.map(movieDto, Movie.class);
+		Movie dbMovie=movieDao.updateMovie(movieId,movie);
+		if(dbMovie!=null) {
+			ResponseStructure<MovieDto> structure=new ResponseStructure<MovieDto>();
+			structure.setMessage("Movie updated successfully");
+			structure.setStatus(HttpStatus.CREATED.value());
+			structure.setData(this.modelMapper.map(dbMovie, MovieDto.class));
+			return new ResponseEntity<ResponseStructure<MovieDto>>(structure,HttpStatus.CREATED);
+		}else{
+			throw new MovieIdNotFoundException("Sorry failed to update movie");
+		}
+		
+		
+		
+	
 	}
  
 	
-	
+}

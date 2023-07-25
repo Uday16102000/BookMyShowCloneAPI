@@ -46,8 +46,8 @@ Optional<Screen> optional=repo.findById(screenId);
 if(optional.isPresent())
 {
 	Screen screen=optional.get();
-	Theatre theatre = screen.getTheatre();
-	theatre.setScreen(null);
+//	Theatre theatre = screen.getTheatre();
+//	theatre.setScreen(null);
 	screen.setTheatre(null);
 	
 	repo.delete(screen);

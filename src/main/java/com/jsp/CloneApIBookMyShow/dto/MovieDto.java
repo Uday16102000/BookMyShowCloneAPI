@@ -2,6 +2,9 @@ package com.jsp.CloneApIBookMyShow.dto;
 
 import java.time.LocalDateTime;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jsp.CloneApIBookMyShow.entity.ProductionHouse;
 import com.jsp.CloneApIBookMyShow.enums.Genres;
 
@@ -14,6 +17,7 @@ public class MovieDto
 	private Genres genre1;
 	private Genres genre2;
 	private Genres genre3;
+    @DateTimeFormat(style= "HH:mm")
 	private LocalDateTime movieDuration;
 	private String movieDescription;
 	private String language;

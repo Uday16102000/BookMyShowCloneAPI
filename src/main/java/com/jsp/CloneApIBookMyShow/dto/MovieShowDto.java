@@ -6,7 +6,7 @@ import com.jsp.CloneApIBookMyShow.entity.Theatre;
 import com.jsp.CloneApIBookMyShow.enums.Genres;
 import com.jsp.CloneApIBookMyShow.enums.ShowStatus;
 
-public class ShowDto 
+public class MovieShowDto 
 {
 	private long showId;
 	private LocalDateTime showStartTime;

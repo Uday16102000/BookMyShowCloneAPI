@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -32,6 +33,7 @@ private int noOfPlatinumSeat;
 private int noOfGoldSeat;
 
 @ManyToOne
+@JoinColumn
 private Theatre theatre;
 
 public ScreenType getScreentype() {

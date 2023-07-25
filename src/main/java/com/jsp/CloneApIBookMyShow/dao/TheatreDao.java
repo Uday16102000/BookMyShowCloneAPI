@@ -40,7 +40,7 @@ public class TheatreDao {
 		Theatre theatre=optional.get();
 				theatre.setOwner(null);
 		theatre.setAddress(null);
-		theatre.setScreen(null);
+//		theatre.setScreen(null);
 		theatre.setMovieshows(null);
 	
 		repo.delete(theatre);

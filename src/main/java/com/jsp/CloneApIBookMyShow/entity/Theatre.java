@@ -2,6 +2,7 @@ package com.jsp.CloneApIBookMyShow.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ public class Theatre
 	private Address address;
 	
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "theatre", fetch = FetchType.EAGER)
 	private List<Screen> screen;
 	
 	@ManyToOne
